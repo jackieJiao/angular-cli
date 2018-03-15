@@ -10,8 +10,7 @@ import { expectToFail } from '../../utils/utils';
 const webpackGoodRegEx = /: Compiled successfully./;
 
 export default function () {
-  // TODO(architect): reenable, validate, then delete this test. It is now in devkit/build-webpack.
-  return;
+  // TODO(architect): Delete this test. It is now in devkit/build-webpack.
 
   if (process.platform.startsWith('win')) {
     return Promise.resolve();

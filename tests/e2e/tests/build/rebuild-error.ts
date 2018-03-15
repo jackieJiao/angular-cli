@@ -18,8 +18,7 @@ const extraErrors = [
 ];
 
 export default function () {
-  // TODO(architect): reenable, validate, then delete this test. It is now in devkit/build-webpack.
-  return;
+  // TODO(architect): Delete this test. It is now in devkit/build-webpack.
 
   if (process.platform.startsWith('win')) {
     return Promise.resolve();
@@ -43,7 +42,7 @@ export default function () {
     // Add a major static analysis error on a non-main file to the initial build.
     .then(() => replaceInFile('./src/app/app.component.ts', `'app-root'`, `(() => 'app-root')()`))
     // Should have an error.
-    .then(() => execAndWaitForOutputToMatch('ng', ['serve', '--aot'], failedRe))
+    .then(() => execAndWaitForOutputToMatch('ng', ['build', '--watch', '--aot'], failedRe))
     .then((results) => {
       const stderr = results.stderr;
       if (!stderr.includes('Function calls are not supported')
